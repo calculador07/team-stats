@@ -1,0 +1,266 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0a0f1a;
+    color: #e2e8f0;
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.05em;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0d1424;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #243044;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FFC107;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(17, 24, 39, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-gold {
+    background: rgba(255, 193, 7, 0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+  }
+
+  .glass-hover {
+    transition: all 0.3s ease;
+  }
+
+  .glass-hover:hover {
+    background: rgba(17, 24, 39, 0.8);
+    border-color: rgba(255, 193, 7, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .stat-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: rgba(148, 163, 184, 0.7);
+  }
+
+  .btn-primary {
+    @apply bg-yellow-500 text-black font-bold py-2 px-5 rounded-lg transition-all duration-200;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .btn-primary:hover {
+    @apply bg-yellow-400 shadow-[0_0_20px_rgba(234,179,8,0.4)];
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    @apply border border-slate-600 text-slate-300 font-bold py-2 px-5 rounded-lg transition-all duration-200;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  .btn-secondary:hover {
+    @apply border-slate-400 text-white bg-slate-800;
+  }
+
+  .btn-danger {
+    @apply bg-red-500/20 border border-red-500/40 text-red-400 font-bold py-2 px-4 rounded-lg transition-all duration-200;
+  }
+
+  .btn-danger:hover {
+    @apply bg-red-500/30 border-red-400;
+  }
+
+  .input-dark {
+    @apply bg-pitch-700 border border-slate-700 text-white rounded-lg px-4 py-2.5 w-full transition-all duration-200;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+  }
+
+  .input-dark:focus {
+    @apply outline-none border-yellow-500/60 bg-pitch-600;
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.1);
+  }
+
+  .input-dark::placeholder {
+    color: rgba(148, 163, 184, 0.4);
+  }
+
+  .nav-link {
+    @apply flex items-center gap-2 px-3 py-2 rounded-lg text-slate-400 font-semibold transition-all duration-200;
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 0.03em;
+  }
+
+  .nav-link:hover {
+    @apply text-white bg-white/5;
+  }
+
+  .nav-link.active {
+    @apply text-yellow-400 bg-yellow-500/10;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.08em;
+    font-size: 1.4rem;
+    color: white;
+  }
+
+  .rank-badge {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    min-width: 2rem;
+    text-align: center;
+  }
+
+  .pitch-bg {
+    background: radial-gradient(ellipse at top, #1a2332 0%, #0a0f1a 70%);
+  }
+}
+
+/* Particle background */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 193, 7, 0.3);
+  border-radius: 50%;
+  animation: particle-float linear infinite;
+}
+
+@keyframes particle-float {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.5; }
+  100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+}
+
+/* FIFA card shimmer */
+.card-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 100%
+  );
+  transform: skewX(-15deg);
+  animation: card-shine 3s ease-in-out infinite;
+}
+
+@keyframes card-shine {
+  0% { left: -100%; }
+  50% { left: 150%; }
+  100% { left: 150%; }
+}
+
+/* Number counter animation */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.count-animate {
+  animation: count-up 0.6s ease-out both;
+}
+
+/* Neon text */
+.neon-gold {
+  color: #FFC107;
+  text-shadow: 0 0 10px rgba(255, 193, 7, 0.8), 0 0 20px rgba(255, 193, 7, 0.4);
+}
+
+.neon-green {
+  color: #00FF87;
+  text-shadow: 0 0 10px rgba(0, 255, 135, 0.6);
+}
+
+/* Pitch lines decoration */
+.pitch-lines {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Mobile nav */
+@media (max-width: 768px) {
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: rgba(10, 15, 26, 0.95);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+}
+
+/* Loading pulse */
+.skeleton {
+  background: linear-gradient(90deg, #111827 25%, #1a2332 50%, #111827 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease infinite;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Position badge */
+.pos-GK { color: #FFD700; }
+.pos-DEF { color: #4CAF50; }
+.pos-MID { color: #2196F3; }
+.pos-ATK { color: #FF5722; }
