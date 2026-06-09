@@ -51,8 +51,8 @@ export default function Layout() {
               <Trophy size={16} className="text-black" />
             </div>
             <div>
-              <div className="text-white font-display text-xl tracking-widest leading-none">TEAM</div>
-              <div className="text-yellow-500 font-display text-xl tracking-widest leading-none">STATS</div>
+              <div className="text-white font-display text-xl tracking-widest leading-none">SEM TREINO</div>
+              <div className="text-yellow-500 font-display text-xl tracking-widest leading-none">FC</div>
             </div>
           </div>
         </div>
